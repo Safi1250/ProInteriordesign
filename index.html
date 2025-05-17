@@ -914,6 +914,14 @@
             margin: 0 auto;
             max-width: 800px;
         }
+        @keyframes blinkEffect {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.floating-btn.blinking {
+  animation: blinkEffect 1s infinite;
+}
     </style>
 </head>
 <body>
@@ -1943,6 +1951,23 @@
     document.getElementById('offerPopup').style.display = 'flex';
     }, 200); // Show popup after 2 seconds
     }
+        
+  const floatingButtons = document.querySelectorAll('.floating-btn');
+
+  setInterval(() => {
+    floatingButtons.forEach(btn => {
+      btn.classList.add('blinking');
+    });
+
+    // Stop blinking after 1 second (same as blinkEffect duration)
+    setTimeout(() => {
+      floatingButtons.forEach(btn => {
+        btn.classList.remove('blinking');
+      });
+    }, 1000);
+
+  }, 3000); // Every 3 seconds
+
     </script>
     <script type="application/ld+json">
     {
